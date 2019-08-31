@@ -4,3 +4,5 @@ wfdb_url='https://physionet.org/physiotools/matlab/wfdb-app-matlab/wfdb-app-tool
 unzip('wfdb-app-toolbox-0-10-0.zip');
 cd mcode
 addpath(pwd);savepath
+cd ..
+delete *.zip
