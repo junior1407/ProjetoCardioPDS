@@ -6,6 +6,6 @@
 	
 	
   Execução:  
-    1. Abra o arquivo teste.m  
+    1. Abra o arquivo executar.m  
     2. Altere o caso teste na linha 05, caso queira  
     3. Execute o arquivo.  
