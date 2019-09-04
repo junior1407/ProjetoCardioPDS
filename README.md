@@ -1,7 +1,8 @@
 ﻿# ProjetoCardioPDS
 Talvez seja necessário executar o matlab com admin rights para a instalação e execução, pois serão escritos arquivos no disco rígido correspondentes a instalação da toolbox e também da leitura dos arquivos de teste.  
   Fase de Instalação:  
-    1. Execute uma única vez o arquivo instalacao_toolbox.m 
+    1. Execute uma única vez o arquivo instalacao_toolbox.m
+    Obs. É necessário acessar o matlab com permissões de administrador para que seja possível efetuar o download do arquivo de instalação automativamente.
 
 	
 	
