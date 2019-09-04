@@ -7,8 +7,8 @@ nome_teste = 'a01'; %pode ser 'a01' ou 'b01' ou 'c01'
 % Propriedades e adicao de ruido
 Fs = 1000; % frequencia de amostragem
 
-wfdb2mat(strcat('dados\',nome_teste,'\',nome_teste))
-[t , signal ] = rdmat (strcat('dados\',nome_teste,'\',nome_teste,'m')); % importacao do arquivo para variaveis
+wfdb2mat(strcat('dados/',nome_teste,'/',nome_teste))
+[t , signal ] = rdmat (strcat('dados/',nome_teste,'/',nome_teste,'m')); % importacao do arquivo para variaveis
 % internas
 
 ts = (0:1/1000:( size ( signal ,1) -1) /100) ; % criacao do vetor de tempo
@@ -175,102 +175,104 @@ ecg_cheby2 = filtfilt ( Hd_60hz_cheby2 , filtfilt ( Hd_baseline_cheby2 ,...
 ecg_noise )) ;
 ecg_ellip = filtfilt ( Hd_60hz_ellip , filtfilt ( Hd_baseline_ellip ,...
 ecg_noise ) );
+
 %%
 % Sinal Equiripple
-figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off');
+%figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off');
+subplot(4,2,1)
 plot ( ts (1:5000) , ecg (1:5000) ,'k');
 hold on
 plot ( ts (1:5000) , ecg_equiripple (1:5000) ,'m');
 hold off
-title ('Sinal de ECG filtrado');
-legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 14) ;
+title ('ECG original e filtrado para o filtro FIR Equiripple');
+%legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 10) ;
 ylabel ('Amplitude ( mV )');
 xlabel ('Tempo (s)');
 %%
 % Sinal Kaiser
-figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off')
-;
+%figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off');
+subplot(4,2,2)
 plot ( ts (1:5000) , ecg (1:5000) ,'k');
 hold on
 plot ( ts (1:5000) , ecg_kaiser (1:5000) ,'m');
 hold off
-title ('Sinal de ECG filtrado');
-legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 14) ;
+title ('ECG original e filtrado para o filtro FIR Kaiser');
+%legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 10) ;
 ylabel ('Amplitude ( mV )');
 xlabel ('Tempo (s)');
 %%
 % Sinal Bartlett
-figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off')
-;
+%figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off');
+subplot(4,2,3)
 plot ( ts (1:5000) , ecg (1:5000) ,'k');
 hold on
 plot ( ts (1:5000) , ecg_bartlett (1:5000) ,'m');
 hold off
-title ('Sinal de ECG filtrado');
-legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 14) ;
+title ('ECG original e filtrado para o filtro FIR Bartlett');
+%legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 10) ;
 ylabel ('Amplitude ( mV )');
 xlabel ('Tempo (s)');
 %%
 % Sinal Hamming
-figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off')
-
-;
+%figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off');
+subplot(4,2,4)
 plot ( ts (1:5000) , ecg (1:5000) ,'k');
 hold on
 plot ( ts (1:5000) , ecg_hamming (1:5000) ,'m');
 hold off
-title ('Sinal de ECG filtrado');
-legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 14) ;
+title ('ECG original e filtrado para o filtro FIR Hamming');
+%legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 10) ;
 ylabel ('Amplitude ( mV )');
 xlabel ('Tempo (s)');
 %%
 % Sinal Butter
-figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off')
-;
+%figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off');
+subplot(4,2,5)
 plot ( ts (1:5000) , ecg (1:5000) ,'k');
 hold on
 plot ( ts (1:5000) , ecg_butter (1:5000) ,'m');
 hold off
-title ('Sinal de ECG filtrado');
-legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 14) ;
+title ('ECG original e filtrado para o filtro IIR Butterworth');
+%legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 10) ;
 ylabel ('Amplitude ( mV )');
 xlabel ('Tempo (s)');
 %%
 % Sinal Chebyshev I
-figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off')
-;
+%figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off');
+subplot(4,2,6)
 plot ( ts (1:5000) , ecg (1:5000) ,'k');
 hold on
 plot ( ts (1:5000) , ecg_cheby1 (1:5000) ,'m');
 hold off
-title ('Sinal de ECG filtrado');
-legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 14) ;
+title ('ECG original e filtrado para o filtro IIR Chebyshev I');
+%legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 10) ;
 ylabel ('Amplitude ( mV )');
 xlabel ('Tempo (s)');
 %%
 % Sinal Chebyshev II
-figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off')
-;
+%figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off');
+subplot(4,2,7)
 plot ( ts (1:5000) , ecg (1:5000) ,'k');
 hold on
 plot ( ts (1:5000) , ecg_cheby2 (1:5000) ,'m');
 hold off
-title ('Sinal de ECG filtrado');
-legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 14) ;
+title ('ECG original e filtrado para o filtro IIR Chebyshev II');
+%legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 10) ;
 ylabel ('Amplitude ( mV )');
 xlabel ('Tempo (s)');
 %%
 % Sinal Elliptico
-figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off')
-;
+%figure ('Name','Sinal de ECG original e filtrado','NumberTitle','off');
+subplot(4,2,8)
 plot ( ts (1:5000) , ecg (1:5000) ,'k');
 hold on
 plot ( ts (1:5000) , ecg_ellip (1:5000) ,'m');
 hold off
-title ('Sinal de ECG filtrado');
-legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 14) ;
+title ('ECG original e filtrado para o filtro IIR Eliptico');
+%legend ({'Sinal original','Sinal filtrado'},'location','southeast','FontSize', 10) ;
 ylabel ('Amplitude ( mV )');
 xlabel ('Tempo (s)');
+
 %%
 % Calculo dos valores de potencia
 L = length ( ecg );
